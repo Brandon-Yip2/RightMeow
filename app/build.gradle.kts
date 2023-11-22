@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.rightmeow"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.rightmeow"
