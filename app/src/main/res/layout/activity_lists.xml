@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F399C7"
-    tools:context=".MainActivity">
+    tools:context=".Lists">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,30 +17,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/title"
-        tools:srcCompat="@drawable/title" />
+        app:srcCompat="@drawable/lists"
+        tools:srcCompat="@drawable/lists" />
 
     <LinearLayout
-        android:layout_width="401dp"
-        android:layout_height="250dp"
+        android:layout_width="409dp"
+        android:layout_height="589dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="263dp"
+        android:layout_marginBottom="1dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="350dp"
+            android:id="@+id/button"
+            android:layout_width="390dp"
             android:layout_height="75dp"
             android:backgroundTint="#AED849A3"
-            android:foreground="@drawable/lists"
-            android:onClick="onClickLists"
+            android:foreground="@drawable/newlist"
+            android:onClick="onNewList"
             android:text="Button"
             android:textAlignment="center"
             android:textColor="@android:color/transparent"
@@ -52,24 +52,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="350dp"
-            android:layout_height="75dp"
-            android:backgroundTint="#AED849A3"
-            android:foreground="@drawable/settings"
-            android:onClick="onClickSettings"
-            android:text="Button"
-            android:textAlignment="center"
-            android:textColor="@android:color/transparent"
-            android:textColorHighlight="@android:color/transparent"
-            android:textColorHint="@android:color/transparent"
-            android:textColorLink="@android:color/transparent"
-            app:iconTint="@android:color/transparent"
-            app:rippleColor="@android:color/transparent" />
-
+            android:layout_height="500dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
