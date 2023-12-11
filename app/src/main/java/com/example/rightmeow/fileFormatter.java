@@ -93,16 +93,35 @@ public class fileFormatter {
         return result.toString();
     }
 
-    public static void parseFormattedString(String formattedString, List<String> items, List<String> values) {
+    public static String parseFormattedString(String formattedString, List<String> items, List<String> values) {
         String[] lines = formattedString.split("\n");
+        String listnameReturn = "";
 
-        for (String line : lines) {
-            String[] parts = line.split(" ");
-
-            if (parts.length == 2) {
-                items.add(parts[0]);
-                values.add(parts[1]);
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i];
+            if (i == 0){
+                listnameReturn = line;
             }
+            else{
+                String[] parts = line.split(" ");
+
+                if (parts.length == 2) {
+                    items.add(parts[0]);
+                    values.add(parts[1]);
+                }
+            }
+
+        }
+        return listnameReturn;
+    }
+
+    public static boolean convertStringToBoolean(String input) {
+        if ("0".equals(input)) {
+            return false;
+        } else if ("1".equals(input)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("Invalid input. Only '0' and '1' are allowed.");
         }
     }
 

@@ -43,7 +43,7 @@ public class actualList extends AppCompatActivity {
                 }
                 String taskDescription = editTextTask.getText().toString().trim();
                 if (!taskDescription.isEmpty()) {
-                    Task newTask = new Task(taskDescription);
+                    Task newTask = new Task(taskDescription, Boolean.FALSE);
                     taskList.add(newTask);
                     taskAdapter.notifyDataSetChanged();
                     editTextTask.setText("");
