@@ -17,7 +17,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lists extends AppCompatActivity {
+public class Lists extends LightActivity {
     private ListAdapter listAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
