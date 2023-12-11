@@ -104,7 +104,6 @@ public class fileFormatter {
             }
             else{
                 String[] parts = line.split(" ");
-
                 if (parts.length == 2) {
                     items.add(parts[0]);
                     values.add(parts[1]);

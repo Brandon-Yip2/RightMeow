@@ -12,12 +12,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lists extends AppCompatActivity {
+public class Lists extends LightActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
+
     }
 
     //Helper method for onResume
