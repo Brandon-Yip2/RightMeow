@@ -1,9 +1,10 @@
 package com.example.rightmeow;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class ToDoList {
+public class ToDoList implements Serializable {
     String name;
     ArrayList<Task> tasks = new ArrayList<>();
 
@@ -12,4 +13,7 @@ public class ToDoList {
         tasks = _tasks;
     }
 
+    public String getName() {
+        return name;
+    }
 }

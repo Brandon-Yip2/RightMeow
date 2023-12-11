@@ -101,13 +101,17 @@ public class fileFormatter {
             String line = lines[i];
             if (i == 0){
                 listnameReturn = line;
+                Log.d("test", "listname: " + listnameReturn);
             }
             else{
                 String[] parts = line.split(" ");
+                //Log.d("test", "parts length is: " + parts.length);
 
                 if (parts.length == 2) {
                     items.add(parts[0]);
+                    //Log.d("test", "items length is: " + items.size());
                     values.add(parts[1]);
+                    //Log.d("test", "balues length is: " + values.size());
                 }
             }
 

@@ -1,6 +1,8 @@
 package com.example.rightmeow;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable {
     private String description;
     public Boolean completed;
     public Task(String description, Boolean completed) {

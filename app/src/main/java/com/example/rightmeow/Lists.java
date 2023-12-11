@@ -1,11 +1,16 @@
 package com.example.rightmeow;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 
 
 import java.io.File;
@@ -13,11 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lists extends AppCompatActivity {
-
+    private ListAdapter listAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
+
+        loadLists();
     }
 
     //Helper method for onResume
@@ -30,6 +37,10 @@ public class Lists extends AppCompatActivity {
         super.onResume();
         //here
 
+        loadLists();
+    }
+
+    public void loadLists(){
         if (fileExists("ListFilename")){
 
             fileFormatter ff = new fileFormatter();
@@ -44,27 +55,28 @@ public class Lists extends AppCompatActivity {
 
             Log.d("test", "description length is: " + descriptions.size());
 
-
             ArrayList<Task> tasks = new ArrayList<>();
             for (int i = 0; i < descriptions.size(); i++) {
                 Task newTask = new Task(descriptions.get(i), ff.convertStringToBoolean(booleans.get(i)));
                 tasks.add(newTask);
             }
 
-
             ToDoList resumedList = new ToDoList(listname, tasks);
-            if (resumedList.tasks.size() > 0){
-                Log.d("test", "LIST LENGTH RESUMED IS: " + resumedList.tasks.size());
-                Log.d("test", resumedList.tasks.get(0).getDescription());
-                Log.d("test", String.valueOf(resumedList.tasks.get(0).getCompleted()));
-            }
 
+            RecyclerView recyclerViewLists = findViewById(R.id.recyclerViewLists);
+
+            ListAdapt listAdapt = new ListAdapt(resumedList);
+            recyclerViewLists.setLayoutManager(new LinearLayoutManager(this));
+            recyclerViewLists.setAdapter(listAdapt);
+            listAdapt.notifyDataSetChanged();
         }
     }
+
 
     public void onNewList(View view){
         Intent myIntent=new Intent(getBaseContext(),actualList.class);
         startActivity(myIntent);
     }
+
 
 }

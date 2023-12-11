@@ -32,7 +32,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         Task task = taskList.get(position);
         holder.textViewDescription.setText(task.getDescription());
 
-        holder.checkBox.setChecked(false);
+        if(task.completed){
+            holder.checkBox.setChecked(true);
+
+        }
+        else{
+            holder.checkBox.setChecked(false);
+        }
+
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

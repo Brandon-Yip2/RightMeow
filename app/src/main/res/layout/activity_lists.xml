@@ -27,7 +27,6 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
-        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +35,9 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp"
+
             android:backgroundTint="#AED849A3"
             android:foreground="@drawable/newlist"
             android:onClick="onNewList"
@@ -52,7 +52,14 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewLists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="-1dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
