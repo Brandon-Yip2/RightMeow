@@ -30,24 +30,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     //**********************Light sensor code******************
     private SensorManager sensorManager;
     private Sensor lightSensor;
-    private static final float LIGHT_THRESHOLD = 50.0f;
-
-
+    //private LightSensorManager LSM;
 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        /*
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+            float lux = event.values[0];
 
-            //current light level in SI lex units
-            float lightValue = event.values[0];
-
-            //Conditions to change brightness
-            if (lightValue < LIGHT_THRESHOLD){
-
-            }
+            int light_level = LSM.getLightLevel(lux);
+            LSM.setBrightness(this, light_level);
 
         }
+
+        */
     }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -60,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
+        //LSM = new LightSensorManager();
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
             }
         }
-        */
+
 
         //Creating a file with contents
         fileFormatter ff = new fileFormatter();
