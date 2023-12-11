@@ -2,6 +2,7 @@
 package com.example.rightmeow;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,20 @@ public class actualList extends AppCompatActivity {
     }
     public void onSave(View view){
         ToDoList newList = new ToDoList(listName, taskList);
+        fileFormatter ff = new fileFormatter();
+        String writingContent = listName + "\n";
+
+        for (int i = 0; i<newList.tasks.size(); i++){
+            String taskString = newList.tasks.get(i).getDescription();
+            writingContent += taskString;
+            if (i < newList.tasks.size()-1) {
+                 writingContent += "\n";
+            }
+        }
+
+        ff.WriteToFile(this, writingContent, "ListFilename");
+
+
     }
 
 
