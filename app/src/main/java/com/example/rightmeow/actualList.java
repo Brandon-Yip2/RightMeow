@@ -65,8 +65,6 @@ public class actualList extends AppCompatActivity {
         }
 
         ff.WriteToFile(this, writingContent, "ListFilename");
-
-
     }
 
 
