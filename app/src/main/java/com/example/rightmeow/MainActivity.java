@@ -3,15 +3,94 @@ package com.example.rightmeow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.util.Log;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+    //**********************Light sensor code******************
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private static final float LIGHT_THRESHOLD = 50.0f;
+
+
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+
+            //current light level in SI lex units
+            float lightValue = event.values[0];
+
+            //Conditions to change brightness
+            if (lightValue < LIGHT_THRESHOLD){
+
+            }
+
+        }
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Do nothing for now
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            if (lightSensor != null) {
+                sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            }
+        }
+        */
+
+        //Creating a file with contents
+        fileFormatter ff = new fileFormatter();
+        List<String> testListNames = Arrays.asList("Milk", "Eggs", "Pizza");
+        List<String> testListBooleans = Arrays.asList("0", "1", "0");
+        String filename = "listfile";
+
+        String listContent = ff.createFormattedString(testListNames, testListBooleans);
+        Log.d("test", listContent);
+
+        File file = new File(this.getFilesDir(), filename);
+
+        ff.WriteToFile(this, listContent, filename);
+
+        String recieved = ff.readFile(this, filename);
+
+        List<String> itemsRecieved = new ArrayList<>();
+        List<String> booleansRecieved = new ArrayList<>();
+        ff.parseFormattedString(recieved, itemsRecieved, booleansRecieved);
+
+        Log.d("test", itemsRecieved.get(1));
+
     }
 
     public void onClickLists(View view){
@@ -26,3 +105,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+
