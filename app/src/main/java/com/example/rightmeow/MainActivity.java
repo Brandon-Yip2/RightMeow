@@ -26,46 +26,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
-    //**********************Light sensor code******************
-    private SensorManager sensorManager;
-    private Sensor lightSensor;
-    //private LightSensorManager LSM;
-
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        /*
-        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
-            float lux = event.values[0];
-
-            int light_level = LSM.getLightLevel(lux);
-            LSM.setBrightness(this, light_level);
-
-        }
-
-        */
-    }
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Do nothing for now
-    }
-
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //LSM = new LightSensorManager();
-
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (sensorManager != null) {
-            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-            if (lightSensor != null) {
-                sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
-            }
-        }
 
     }
 
