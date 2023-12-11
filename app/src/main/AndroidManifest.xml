@@ -16,6 +16,15 @@
         android:theme="@style/Theme.RightMeow"
         tools:targetApi="31">
         <activity
+            android:name=".actualList"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Lists"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -2,8 +2,10 @@ package com.example.rightmeow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -177,6 +179,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     }
+
+    public void onClickLists(View view){
+        Intent myIntent = new Intent(getBaseContext(),Lists.class);
+        startActivity(myIntent);
+    }
+
+    public void onClickSettings(View view){
+        Intent myIntent=new Intent(getBaseContext(),Settings.class);
+        startActivity(myIntent);
+
+    }
+
 
 
 
